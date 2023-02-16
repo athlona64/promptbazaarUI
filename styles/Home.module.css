@@ -195,12 +195,13 @@
   }
 
   .center {
-    padding: 8rem 0 6rem;
+    margin-top: 0rem;
+    padding: 0rem 0 0rem;
   }
 
   .center::before {
     transform: none;
-    height: 300px;
+    height: 100px;
   }
 
   .description {
