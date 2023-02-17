@@ -18,12 +18,13 @@ export default function FullSearch() {
       sx={{
         width: 2/4,
         maxWidth: '100%',
-        backgroundColor: '#23272a',
+
       }}
     >
-      <TextField  fullWidth color='warning' label="Find prompt" id="fullWidth"
+      <TextField  fullWidth color='warning' label="Find prompt" id="fullWidth" focused
        sx={{
-         fieldset: { borderColor: "orange" }
+         fieldset: { borderColor: "orange", },
+         input: { color: 'white' }
          }} />
     </Box>
     </Grid>
