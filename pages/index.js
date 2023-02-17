@@ -3,8 +3,10 @@ import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 import ResponsiveAppBar from './appbar';
 import BasicGrid from './top';
-
-
+import Middle from './middle';
+import Divider from '@mui/material/Divider';
+import FullSearch from './search';
+import GuestFooter from './footer';
 export default function Home() {
   return (
     <>
@@ -25,23 +27,11 @@ export default function Home() {
         <br></br>
         <br></br><br></br>
         <BasicGrid></BasicGrid>
-        <div >
-          
-          <p>
-            Prompt Bazaar is Prompt marketplace&nbsp;
-            {/* <code className={styles.code}>pages/index.js</code> */}
-          </p>
-          <div>
-       
-              By{' PromptBazaar'}
+        <br/>
+        <FullSearch></FullSearch>
+        <Middle></Middle>
 
-          </div>
-        </div>
-
-        <div>
-         <h1>Stay for PromptBazaar</h1> 
-  
-        </div>
+        <GuestFooter></GuestFooter>
 
       </main>
     </>
