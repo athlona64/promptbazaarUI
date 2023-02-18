@@ -14,7 +14,7 @@ export default function Home() {
     
     
       <Head>
-        <title>PromptBazaar next generation for prompt marketplace</title>
+        <title>PromptBazaar | Prompt marketplace for trading your prompt instant and allow all country with web3 payment</title>
         <meta name="description" content="Prompt marketplace" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
