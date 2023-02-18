@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export default function DetailText() {
+export default function PromptInstuction() {
   return (
     <Box
       component="form"
@@ -16,7 +16,8 @@ export default function DetailText() {
 
         <TextField
           id="outlined-multiline-static"
-          label="description"
+          label="Prompt Instuction"
+          placeholder='tip You can use weapons hold in each hand.'
           multiline
           rows={4}
           defaultValue=""

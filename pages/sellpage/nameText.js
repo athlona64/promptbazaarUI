@@ -7,7 +7,7 @@ export default function NameText() {
     <Box
       component="form"
       sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
+        '& > :not(style)': { m: 1, width: '70ch' },
       }}
       noValidate
       autoComplete="off"

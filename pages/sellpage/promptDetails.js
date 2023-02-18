@@ -8,6 +8,7 @@ import TypeComponent from './typecomponent'
 import NameText from './nameText';
 import DetailText from './detailText';
 import PriceComponent from './price';
+import Grid from '@mui/material/Grid';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -16,11 +17,11 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function InfoPromptDetail() {
+export default function PromptDetail() {
 
   return (
     <>
-    <Box sx={{ width: 2/3, mx: 20 }}>
+    <Grid sx={{ width: 2/3, mx: 20}}>
       <Stack spacing={2}>
         <Item><Typography variant='h4'>Prompt Details</Typography>
         <br/>
@@ -48,7 +49,7 @@ export default function InfoPromptDetail() {
         <PriceComponent></PriceComponent>
         </Item>
       </Stack>
-    </Box>
+    </Grid>
     </>
   );
 }

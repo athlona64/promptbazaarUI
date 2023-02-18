@@ -5,8 +5,9 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import InfoPromptDetail from './promptDetails'
+import PromptDetail from './promptDetails'
 import Info from '@mui/icons-material/Info';
+import PromptFile from './promptFile';
 const steps = ['Prompt Details', 'Prompt File', 'Success'];
 
 export default function HorizontalLinearStepper() {
@@ -115,8 +116,8 @@ export default function HorizontalLinearStepper() {
         <React.Fragment>
             <br/>
             <br/>
-          {activeStep === 0 ? <InfoPromptDetail></InfoPromptDetail> : ''}
-
+          {activeStep === 0 ? <PromptDetail></PromptDetail> : ''}
+          {activeStep === 1 ? <PromptFile></PromptFile> : ''}
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button
               color="warning"
