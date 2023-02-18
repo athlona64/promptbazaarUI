@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import PromptDetail from './promptDetails'
 import Info from '@mui/icons-material/Info';
 import PromptFile from './promptFile';
-const steps = ['Prompt Details', 'Prompt File', 'Success'];
+const steps = ['Prompt Details', 'Prompt File', 'Prompt List'];
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
