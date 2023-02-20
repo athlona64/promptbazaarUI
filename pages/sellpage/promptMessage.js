@@ -3,6 +3,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 export default function PromptMessage() {
+  const [promptMessage, setPromptMessage] = React.useState('');
+
+  const handleMessage = (event) => {
+    setPromptMessage(event.target.value);
+  }
   return (
     <Box
       component="form"
@@ -16,6 +21,7 @@ export default function PromptMessage() {
 
         <TextField
           id="outlined-multiline-static"
+          onChange={handleMessage}
           label="Prompt"
           placeholder='Digital fantasy art of ragnarok online..'
           multiline

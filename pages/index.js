@@ -7,6 +7,7 @@ import Middle from './middle';
 import Divider from '@mui/material/Divider';
 import FullSearch from './search';
 import GuestFooter from './footer';
+
 export default function Home() {
   return (
     <>
@@ -26,6 +27,7 @@ export default function Home() {
         <br></br>
         <br></br>
         <br></br><br></br>
+        
         <BasicGrid></BasicGrid>
         <br/>
         <FullSearch></FullSearch>

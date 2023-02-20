@@ -3,6 +3,12 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 export default function PromptInstuction() {
+   const [promptInstuction, setPromptInstuction] = React.useState('');
+   
+   const handleInstuction = (event) =>{
+    setPromptInstuction(event.target.value);
+   }
+
   return (
     <Box
       component="form"

@@ -2,11 +2,11 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export default function DetailText() {
-  const [promptDetailText, setPromptDetailText] = React.useState('');
+export default function DetailTextTwo() {
+  const [promptDetailTextTwo, setPromptDetailTextTwo] = React.useState('');
 
-  const handleDetail = (event) => {
-    setPromptDetailText(event.target.value);
+  const handleDetailTwo = (event) => {
+    setPromptDetailTextTwo(event.target.value);
   }
   return (
     <Box
@@ -21,7 +21,7 @@ export default function DetailText() {
 
         <TextField
           id="outlined-multiline-static"
-          onChange={handleDetail}
+          onChange={handleDetailTwo}
           label="description"
           multiline
           rows={4}

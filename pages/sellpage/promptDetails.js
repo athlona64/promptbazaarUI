@@ -19,9 +19,10 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function PromptDetail() {
 
+   
   return (
     <>
-    <Grid sx={{ width: 2/3, mx: 20}}>
+    <Grid container sx={{ width: 2/3, mx: 20}}>
       <Stack spacing={2}>
         <Item><Typography variant='h4'>Prompt Details</Typography>
         <br/>

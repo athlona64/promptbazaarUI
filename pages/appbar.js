@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
+import WalletConnect from './wallet';
 const pages = [ { text: 'Marketplace', href: '/marketplace' }, { text: 'Generate', href: '/generate'}, { text: 'Sell', href: '/sellpage/sell'} ];
 const linkPage = ['', '', 'sellpage/sell'];
 const settings = ['Profile', 'Logout'];
@@ -129,9 +130,10 @@ function ResponsiveAppBar() {
               </Link>
             ))}
           </Box>
-
+         
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="open">
+          <WalletConnect></WalletConnect>
+            {/* <Tooltip title="open">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
@@ -158,7 +160,7 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

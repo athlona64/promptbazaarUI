@@ -3,6 +3,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 export default function NameText() {
+  const [promptName, setPromptName] = React.useState('');
+
+  const handleName = (event) => {
+    setPromptName(event.target.value);
+  }
   return (
     <Box
       component="form"
@@ -12,7 +17,7 @@ export default function NameText() {
       noValidate
       autoComplete="off"
     >
-      <TextField label="Name" color="success" focused />
+      <TextField label="Name" onChange={handleName} color="success" focused />
 
     </Box>
   );

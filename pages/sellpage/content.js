@@ -118,6 +118,7 @@ export default function HorizontalLinearStepper() {
             <br/>
           {activeStep === 0 ? <PromptDetail></PromptDetail> : ''}
           {activeStep === 1 ? <PromptFile></PromptFile> : ''}
+          
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button
               color="warning"
