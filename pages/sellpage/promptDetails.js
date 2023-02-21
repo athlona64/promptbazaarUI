@@ -19,6 +19,27 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function PromptDetail() {
 
+    const [promptType, setPromptType] = React.useState('');
+    const [promptName, setPromptName] = React.useState('');
+    const [promptDetailText, setPromptDetailText] = React.useState('');
+    const [promptPrice, setPromptPrice] = React.useState('');
+
+    const handlePrice = (event) => {
+        console.log(event.target.value);
+      setPromptPrice(event.target.value);
+    };
+    const handleDetail = (event) => {
+        console.log(event.target.value);
+      setPromptDetailText(event.target.value);
+    }
+    const handleName = (event) => {
+        console.log(event.target.value);
+      setPromptName(event.target.value);
+    }
+    const handleChange = (event) => {
+      console.log(event.target.value);
+      setPromptType(event.target.value);
+    };
    
   return (
     <>
@@ -32,22 +53,22 @@ export default function PromptDetail() {
         <br/>
         <Typography sx={{ fontSize: 12}}>Prompt Type</Typography>
         <Typography sx={{ fontSize: 14, fontWeight: 300, fontStyle: 'italic'}}>Select the type of prompt you want to sell.</Typography>
-        <TypeComponent></TypeComponent>
+        <TypeComponent handleChange={handleChange}></TypeComponent>
 
         <br/>
         <Typography sx={{ fontSize: 12}}>Name</Typography>
         <Typography sx={{ fontSize: 14, fontWeight: 300, fontStyle: 'italic'}}>Suggest a title for this prompt.</Typography>
-        <NameText></NameText>
+        <NameText handleName={handleName}></NameText>
 
         <br/>
         <Typography sx={{ fontSize: 12}}>Description</Typography>
         <Typography sx={{ fontSize: 14, fontWeight: 300, fontStyle: 'italic'}}>Describe what your prompt does to a potential buyer. A more detailed description will increase your sales.</Typography>
-        <DetailText></DetailText>
+        <DetailText handleDetail={handleDetail}></DetailText>
 
         <br/>
         <Typography sx={{ fontSize: 12}}>Price</Typography>
         <Typography sx={{ fontSize: 14, fontWeight: 300, fontStyle: 'italic'}}>What do you think the price of this prompt should be?</Typography>
-        <PriceComponent></PriceComponent>
+        <PriceComponent handlePrice={handlePrice}></PriceComponent>
         </Item>
       </Stack>
     </Grid>

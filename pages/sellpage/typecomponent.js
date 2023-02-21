@@ -4,13 +4,10 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function TypeComponent() {
+export default function TypeComponent({handleChange}) {
+
   const [promptType, setPromptType] = React.useState('');
-
-  const handleChange = (event) => {
-    setPromptType(event.target.value);
-  };
-
+  
   return (
     <FormControl sx={{ m: 1, minWidth: 300 }} >
       <InputLabel id="demo-select-small">Prompt Type</InputLabel>

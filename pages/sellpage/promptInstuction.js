@@ -2,12 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export default function PromptInstuction() {
-   const [promptInstuction, setPromptInstuction] = React.useState('');
-   
-   const handleInstuction = (event) =>{
-    setPromptInstuction(event.target.value);
-   }
+export default function PromptInstuction({handleInstuction}) {
+
 
   return (
     <Box
@@ -22,6 +18,7 @@ export default function PromptInstuction() {
 
         <TextField
           id="outlined-multiline-static"
+          onChange={handleInstuction}
           label="Prompt Instuction"
           placeholder='tip You can use weapons hold in each hand.'
           multiline

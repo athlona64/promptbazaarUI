@@ -2,12 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export default function DetailText() {
-  const [promptDetailText, setPromptDetailText] = React.useState('');
+export default function DetailText({handleDetail}) {
 
-  const handleDetail = (event) => {
-    setPromptDetailText(event.target.value);
-  }
   return (
     <Box
       component="form"

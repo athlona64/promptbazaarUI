@@ -2,12 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export default function PromptMessage() {
-  const [promptMessage, setPromptMessage] = React.useState('');
+export default function PromptMessage({handleMessage}) {
 
-  const handleMessage = (event) => {
-    setPromptMessage(event.target.value);
-  }
   return (
     <Box
       component="form"
