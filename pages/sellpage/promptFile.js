@@ -21,9 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function PromptFile({passToContent}) {
-    const [promptMessage, setPromptMessage] = React.useState('');
-    const [promptInstuction, setPromptInstuction] = React.useState('');
-    const [promptDetailTextTwo, setPromptDetailTextTwo] = React.useState('');
+
     const [imageUrl, setImageUrl] = React.useState([]);
     const [selectedImage, setSelectedImage] = React.useState([]);
 
@@ -46,23 +44,16 @@ export default function PromptFile({passToContent}) {
   
     const handleSelectImage = (event) => {
       setSelectedImage(event.target.files)
-      setDataFile(obj => ({...obj, images: imageUrl}))
-      passToContent(dataFile);
+      passToContent(event.target.files, 'image');
     }
     const handleDetailTwo = (event) => {
-      setPromptDetailTextTwo(event.target.value);
-      setDataFile(obj => ({...obj, detailTwo: promptDetailTextTwo}))
-      passToContent(dataFile);
+      passToContent(event.target.value, 'detail');
     }
     const handleInstuction = (event) =>{
-     setPromptInstuction(event.target.value);
-     setDataFile(obj => ({...obj, instuction: promptInstuction}))
-     passToContent(dataFile);
+     passToContent(event.target.value, 'instuction');
     }
     const handleMessage = (event) => {
-      setPromptMessage(event.target.value);
-      setDataFile(obj => ({...obj, message: promptMessage}))
-      passToContent(dataFile);
+      passToContent(event.target.value, 'message');
     }
 
   return (

@@ -16,12 +16,25 @@ const steps = ['Prompt Details', 'Prompt File', 'Prompt List'];
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
-  const [dataFile2, setDataFile2] = React.useState({
+  const [dataFile, setDataFile] = React.useState({
     message:'',
     instuction: '',
     detailTwo: '',
     images: []
 });
+
+
+const passToContent = (data, options) => {
+  if(options === 'image') {
+    setDataFile(obj => ({...obj, images: data}))
+  } else if(options === 'detail') {
+    setDataFile(obj => ({...obj, detailTwo: data}))
+  } else if(options === 'instuction') {
+    setDataFile(obj => ({...obj, instuction: data}))
+  } else if(options === 'message') {
+    setDataFile(obj => ({...obj, message: data}))
+  }
+}
 
 const sendDataToApi = async (data) => {
   try {
@@ -32,13 +45,8 @@ const sendDataToApi = async (data) => {
   }
 };
   useEffect(() => {
-    console.log(dataFile2);
-  }, [dataFile2]);
-
-  const passToContent = (obj) => {
-    setDataFile2(emp => ({...emp, ...obj}));
-    // sendDataToApi(dataFile2);
-  }
+    console.log(dataFile);
+  }, [dataFile]);
 
   const isStepOptional = (step) => {
     return step === 1;
