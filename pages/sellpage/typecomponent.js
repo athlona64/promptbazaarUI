@@ -8,6 +8,9 @@ export default function TypeComponent({handleChange}) {
 
   const [promptType, setPromptType] = React.useState('');
   
+  const handleDisplay = (event) =>{
+    setPromptType(event.target.value);
+  }
   return (
     <FormControl sx={{ m: 1, minWidth: 300 }} >
       <InputLabel id="demo-select-small">Prompt Type</InputLabel>
@@ -16,7 +19,7 @@ export default function TypeComponent({handleChange}) {
         id="demo-select-small"
         value={promptType}
         label="PromptType"
-        onChange={handleChange}
+        onChange={e => {handleChange(e), handleDisplay(e)}}
       >
         <MenuItem value="">
           <em>Midjourney</em>

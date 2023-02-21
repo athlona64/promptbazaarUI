@@ -13,7 +13,21 @@ const steps = ['Prompt Details', 'Prompt File', 'Prompt List'];
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
-
+  const [dataFile, setDataFile] = React.useState({
+    message:'',
+    instuction: '',
+    detailTwo: '',
+    images: []
+});
+  const passToContent = () => {
+    setDataFile({
+        message: promptMessage,
+        instuction: promptInstuction,
+        detailTwo: promptDetailTextTwo,
+        images: imageUrl
+    });
+    console.log(dataFile);
+}
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -118,7 +132,7 @@ export default function HorizontalLinearStepper() {
             <br/>
             <br/>
           {activeStep === 0 ? <PromptDetail></PromptDetail> : ''}
-          {activeStep === 1 ? <PromptFile></PromptFile> : ''}
+          {activeStep === 1 ? <PromptFile passToContent={passToContent}></PromptFile> : ''}
           
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Button

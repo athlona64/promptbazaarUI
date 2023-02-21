@@ -20,13 +20,13 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function PromptFile() {
+export default function PromptFile({passToContent}) {
     const [promptMessage, setPromptMessage] = React.useState('');
     const [promptInstuction, setPromptInstuction] = React.useState('');
     const [promptDetailTextTwo, setPromptDetailTextTwo] = React.useState('');
     const [imageUrl, setImageUrl] = React.useState([]);
     const [selectedImage, setSelectedImage] = React.useState([]);
-  
+
     useEffect(() => {
       if (selectedImage) {
         console.log(selectedImage);
@@ -40,16 +40,21 @@ export default function PromptFile() {
   
     const handleSelectImage = (event) => {
       setSelectedImage(event.target.files)
+      passToContent();
     }
     const handleDetailTwo = (event) => {
       setPromptDetailTextTwo(event.target.value);
+      passToContent();
     }
     const handleInstuction = (event) =>{
      setPromptInstuction(event.target.value);
+     passToContent();
     }
     const handleMessage = (event) => {
       setPromptMessage(event.target.value);
+      passToContent();
     }
+
   return (
     <>
     <Box sx={{ width: 2/3, mx: 20 }}>
@@ -93,8 +98,6 @@ export default function PromptFile() {
               </ImageListItem>
             ))}
           </ImageList>
-         
-       
         </Box>
       )}
         </Item>

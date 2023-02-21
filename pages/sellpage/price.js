@@ -7,6 +7,9 @@ import Select from '@mui/material/Select';
 export default function PriceComponent({handlePrice}) {
   const [promptPrice, setPromptPrice] = React.useState('');
 
+  const handleDisplayPrice = (event) => {
+    setPromptPrice(event.target.price);
+  }
   return (
     <FormControl sx={{ m: 1, minWidth: 300 }} >
       <InputLabel id="demo-select-small">Price</InputLabel>
@@ -15,10 +18,13 @@ export default function PriceComponent({handlePrice}) {
         id="demo-select-small"
         value={promptPrice}
         label="PromptPrice"
-        onChange={handlePrice}
+        onChange={e => {handlePrice(e), handleDisplayPrice(e)}}
       >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
         <MenuItem value={1.99}>
-          <em>$1.99</em>
+          $1.99
         </MenuItem>
         <MenuItem value={2.99}>$2.99</MenuItem>
         <MenuItem value={3.99}>$3.99</MenuItem>
