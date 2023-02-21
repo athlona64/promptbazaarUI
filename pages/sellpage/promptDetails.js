@@ -27,10 +27,13 @@ export default function PromptDetail() {
     const handlePrice = (event) => {
         console.log(event.target.value);
       setPromptPrice(event.target.value);
+     
     };
     const handleDetail = (event) => {
-        console.log(event.target.value);
+
+      console.log(event.target.value);
       setPromptDetailText(event.target.value);
+     
     }
     const handleName = (event) => {
         console.log(event.target.value);

@@ -27,6 +27,12 @@ export default function PromptFile({passToContent}) {
     const [imageUrl, setImageUrl] = React.useState([]);
     const [selectedImage, setSelectedImage] = React.useState([]);
 
+    const [dataFile, setDataFile] = React.useState({
+      message:'',
+      instuction: '',
+      detailTwo: '',
+      images: []
+    });
     useEffect(() => {
       if (selectedImage) {
         console.log(selectedImage);
@@ -40,19 +46,23 @@ export default function PromptFile({passToContent}) {
   
     const handleSelectImage = (event) => {
       setSelectedImage(event.target.files)
-      passToContent();
+      setDataFile(obj => ({...obj, images: imageUrl}))
+      passToContent(dataFile);
     }
     const handleDetailTwo = (event) => {
       setPromptDetailTextTwo(event.target.value);
-      passToContent();
+      setDataFile(obj => ({...obj, detailTwo: promptDetailTextTwo}))
+      passToContent(dataFile);
     }
     const handleInstuction = (event) =>{
      setPromptInstuction(event.target.value);
-     passToContent();
+     setDataFile(obj => ({...obj, instuction: promptInstuction}))
+     passToContent(dataFile);
     }
     const handleMessage = (event) => {
       setPromptMessage(event.target.value);
-      passToContent();
+      setDataFile(obj => ({...obj, message: promptMessage}))
+      passToContent(dataFile);
     }
 
   return (

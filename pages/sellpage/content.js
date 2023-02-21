@@ -8,26 +8,37 @@ import Typography from '@mui/material/Typography';
 import PromptDetail from './promptDetails'
 import Info from '@mui/icons-material/Info';
 import PromptFile from './promptFile';
+import { useEffect } from 'react';
+import { useCallback } from 'react';
+import axios from 'axios';
 const steps = ['Prompt Details', 'Prompt File', 'Prompt List'];
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
-  const [dataFile, setDataFile] = React.useState({
+  const [dataFile2, setDataFile2] = React.useState({
     message:'',
     instuction: '',
     detailTwo: '',
     images: []
 });
-  const passToContent = () => {
-    setDataFile({
-        message: promptMessage,
-        instuction: promptInstuction,
-        detailTwo: promptDetailTextTwo,
-        images: imageUrl
-    });
-    console.log(dataFile);
-}
+
+const sendDataToApi = async (data) => {
+  try {
+    const res = await axios.post('https://eotvpgsnftfojs9.m.pipedream.net', data);
+    console.log(res.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+  useEffect(() => {
+    console.log(dataFile2);
+  }, [dataFile2]);
+
+  const passToContent = (obj) => {
+    setDataFile2(emp => ({...emp, ...obj}));
+    // sendDataToApi(dataFile2);
+  }
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -144,15 +155,11 @@ export default function HorizontalLinearStepper() {
               Back
             </Button>
             <Box sx={{ flex: '1 1 auto' }} />
-            {/* {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
-            )} */}
-
+         
             <Button onClick={handleNext} color="warning">
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
+
           </Box>
         </React.Fragment>
       )}

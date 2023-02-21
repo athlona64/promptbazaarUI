@@ -20,12 +20,13 @@ export default function TypeComponent({handleChange}) {
         value={promptType}
         label="PromptType"
         onChange={e => {handleChange(e), handleDisplay(e)}}
+        key="prompttype"
       >
         <MenuItem value="">
           <em>Midjourney</em>
         </MenuItem>
         <MenuItem value='Midjourney'>Midjourney</MenuItem>
-
+        <MenuItem value='ChatGPT'>ChatGPT</MenuItem>
       </Select>
     </FormControl>
   );
