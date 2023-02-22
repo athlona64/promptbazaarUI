@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function PromptDetail() {
+export default function PromptDetail({fromPromptDetail}) {
 
     const [promptType, setPromptType] = React.useState('');
     const [promptName, setPromptName] = React.useState('');
@@ -25,23 +25,21 @@ export default function PromptDetail() {
     const [promptPrice, setPromptPrice] = React.useState('');
 
     const handlePrice = (event) => {
-        console.log(event.target.value);
       setPromptPrice(event.target.value);
-     
+      fromPromptDetail(event.target.value, 'price');
     };
     const handleDetail = (event) => {
-
-      console.log(event.target.value);
       setPromptDetailText(event.target.value);
+      fromPromptDetail(event.target.value, 'detail');
      
     }
     const handleName = (event) => {
-        console.log(event.target.value);
       setPromptName(event.target.value);
+      fromPromptDetail(event.target.value, 'name');
     }
     const handleChange = (event) => {
-      console.log(event.target.value);
       setPromptType(event.target.value);
+      fromPromptDetail(event.target.value, 'type');
     };
    
   return (

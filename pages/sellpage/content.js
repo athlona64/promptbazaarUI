@@ -11,16 +11,27 @@ import PromptFile from './promptFile';
 import { useEffect } from 'react';
 import { useCallback } from 'react';
 import axios from 'axios';
-const steps = ['Prompt Details', 'Prompt File', 'Prompt List'];
+import { Backdrop } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
+
+const steps = ['Prompt Details', 'Prompt File'];
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  const [loading, setLoading] = React.useState(false);
   const [dataFile, setDataFile] = React.useState({
     message:'',
     instuction: '',
     detailTwo: '',
     images: []
+});
+
+const [dataDetail, setDataDetail] = React.useState({
+  promptType:'',
+  promptName:'',
+  promptDetail:'',
+  promptPrice:''
 });
 
 
@@ -36,6 +47,18 @@ const passToContent = (data, options) => {
   }
 }
 
+const fromPromptDetail = (data, options) => {
+  if(options === 'type') {
+    setDataDetail(obj => ({...obj, promptType: data}))
+  } else if(options === 'name') {
+    setDataDetail(obj => ({...obj, promptName: data}))
+  } else if(options === 'detail') {
+    setDataDetail(obj => ({...obj, promptDetail: data}))
+  } else if(options === 'price') {
+    setDataDetail(obj => ({...obj, promptPrice: data}))
+  }
+}
+
 const sendDataToApi = async (data) => {
   try {
     const res = await axios.post('https://eotvpgsnftfojs9.m.pipedream.net', data);
@@ -46,6 +69,7 @@ const sendDataToApi = async (data) => {
 };
   useEffect(() => {
     console.log(dataFile);
+    // sendDataToApi(dataFile);
   }, [dataFile]);
 
   const isStepOptional = (step) => {
@@ -56,7 +80,19 @@ const sendDataToApi = async (data) => {
     return skipped.has(step);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
+    if(activeStep === steps.length - 1) {
+      handleLoadingToggle();
+      console.log(dataFile);
+      console.log(dataDetail);
+      const mergeData = {...dataFile, ...dataDetail}; 
+      await sendDataToApi(mergeData);
+      handleLoadingClose();
+    }
+
+   
+
+
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -65,8 +101,15 @@ const sendDataToApi = async (data) => {
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
-  };
 
+ 
+  };
+  const handleLoadingClose = () => {
+    setLoading(false);
+  };
+  const handleLoadingToggle = () => {
+    setLoading(!loading);
+  };
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
@@ -143,14 +186,14 @@ const sendDataToApi = async (data) => {
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleReset}>Reset</Button>
+            {/* <Button onClick={handleReset}>Preview</Button> */}
           </Box>
         </React.Fragment>
       ) : (
         <React.Fragment>
             <br/>
             <br/>
-          {activeStep === 0 ? <PromptDetail></PromptDetail> : ''}
+          {activeStep === 0 ? <PromptDetail fromPromptDetail={fromPromptDetail}></PromptDetail> : ''}
           {activeStep === 1 ? <PromptFile passToContent={passToContent}></PromptFile> : ''}
           
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
@@ -171,6 +214,14 @@ const sendDataToApi = async (data) => {
           </Box>
         </React.Fragment>
       )}
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+        onClick={handleLoadingClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Box>
+    
   );
 }
